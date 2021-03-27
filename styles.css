@@ -1,16 +1,36 @@
-
 body{
     background-color: aqua;
+    font-family: Verdana,sans-serif;
+    font-size: 15px;
+    line-height: 2;
 }
+
+.tabs{
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px solid black;
+    font-size: x-large;
+}
+
+.start{
+    text-align: center;
+}
+
 h1{
-    text-align: center;
     color: blue;
+    margin: 0;
+    padding: 0;
 }
-p{
-    text-align: center;
-    color: #000;
+
+.list{
+    display: grid;
+    place-items: center;
+    list-style-type: none;
 }
-ul{
-    text-align: left;
-    color: #000;
+h4{
+    margin: 0;
+    height:1%;
 }
