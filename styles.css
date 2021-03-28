@@ -5,7 +5,7 @@ body{
     line-height: 1.75;
 }
 
-.tabs{
+#tabs{
     display: flex;
     justify-content: space-around;
     list-style-type: none;
@@ -15,18 +15,14 @@ body{
     font-size: x-large;
 }
 
-.start{
-    display: grid;
-    text-align: center;
-}
-
 h1{
+    text-align: center;
     color: blue;
     margin: 0;
     padding: 0;
 }
 
-.list{
+#mainBody{
     display: grid;
     place-items: center;
     list-style-type: none;
@@ -35,3 +31,40 @@ h1{
 li{
     font-weight: bold;
 }
+
+.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+  }
+  
+  /* Style the buttons that are used to open the tab content */
+  .tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0s;
+  }
+  
+  /* Change background color of buttons on hover */
+  .tab button:hover {
+    background-color: #ddd;
+  }
+  
+  /* Create an active/current tablink class */
+  .tab button.active {
+    background-color: #ccc;
+  }
+  
+  /* Style the tab content */
+  .tabcontent {
+    width: 442;
+    display: none;
+    padding: 6px 12px;
+    background-color: #f1f1f1;
+    border: 1px solid #ccc;
+    border-top: none;
+  }

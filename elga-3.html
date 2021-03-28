@@ -6,78 +6,59 @@
         </head>
 
     <body>
-        <div class="tabs">
+        <div id="tabs">
             <li>Home</li>
             <li>Sheets</li>
             <li>info</li>
         </div>
 
-        <div class="start">
-            <h1> 
-                ELGA-3
-            </h1>
-    
-            <p1>
-                This is the beginning of the elga3 website.<br>
-                The intention is for this to host the gamesheet, music sheet and have some other interactive things.<br>
-                This mostly a process for me to learn how to create and maintain a website.<br>
-                Right now this looks like a website from the early web which makes sense as people knew quite little.<br>
-                But this is hopefully a start to a wonderfull adventure that is going to give me some real relevant experience<br> 
-            </p1>
-        </div>
+        <h1> 
+            ELGA-3
+        </h1>
 
-        <div class="list">
+        <div id = "mainBody">
             <div>
-                <h4> now, my plans for this website is to test out a lot of different website things like:</h4>
-                <div class=listitem>
-                    <li>
-                        add sheets
-                    </li>
+                <p1>
+                    This is the beginning of the elga3 website.<br>
+                    this website was made to host the different sheets and have some other interactive things.<br>
+                    This mostly a process for me to learn how to create and maintain a website.<br>
+                    Right now this looks like a website from the early web which makes sense as people knew quite little like i do.<br>
+                    But this is hopefully a start to a wonderfull adventure that is going to give me some real relevant experience<br> 
+                </p1>
 
-                    <p1>
-                        Adding the sheets we currently have on google docs to the website.<br>
-                        This is not because the sheets dont work, they work wonderfully.<br>
-                        It would just be a lot more efficient to make some sort of website dedicated to this.<br>
-                    </p1>
-                </div>
-
-
-                <div class = "Listitem">
-                    <li>
-                        add accounts
-                    </li>
-
-                    <p1>
-                        To make this happen in a safe way i might have to make some sort of account system. <br>
-                        This is something that i feel can be quite scary to do as i am worried about security.<br>
-                        I also dont really know how to do something like this so might happen a while into the project.<br>
-                    </p1>
-                </div>
-
-                <div class = "listitem">
-                    <li>
-                        add personal subsites
-                    </li>
-
-                    <p1>
-                        When that has been done i would like for the server to be able to edit the website in some easy way. <br>
-                        like make subsites easily where they can have images and text and whatever, just for fun. <br>
-                    </p1>
-                </div>
-
-                <div class = listitem>
-                    <li>
-                        sheet efficency
-                    </li>
-                        
-                    <p1>
-                        This is basically just going to be a way for the server to have some cool website<br>
-                        with shit to do on it, we are already using the sheets, and having a website<br>
-                        which we have 100% controll over would be great.
-                    </p1>
-                </div>
+                <h4> now, my plans for this website are to do the following:</h4>
             </div>
-        </div>
 
+            <div class="tab">
+                <button class="tablinks" onclick="openCity(event, 'add sheets')">add sheets</button>
+                <button class="tablinks" onclick="openCity(event, 'add accounts')">add accounts</button>
+                <button class="tablinks" onclick="openCity(event, 'add personal subsites')">add personal subsites</button>
+                <button class="tablinks" onclick="openCity(event, 'full controll')">full controll</button>
+            </div>
+
+            <div id="add sheets" class = "tabcontent">
+                Adding the sheets we currently have on google docs to the website.
+                we want to do this as it would be far more efficient to have a website dedicated to this.
+            </div>
+
+            <div id="add accounts" class = "tabcontent">
+                To make this happen in a safe way i might have to make some sort of account system.
+                This is something that i feel can be quite scary to do as i am worried about security.
+                I also dont really know how to do something like this so might happen a while into the project.
+            </div>
+
+            <div id="add personal subsites" class = "tabcontent">
+                When that has been done i would like for the server to be able to edit the website in some easy way.
+                    like make subsites easily where they can have images and text and whatever, just for fun.
+            </div>
+
+            <div id="full controll" class = "tabcontent">
+                This is basically just going to be a way for the server to have some cool website
+                with shit to do on it, we are already using the sheets, and having a website
+                which we have 100% controll over would be great.
+            </div>
+
+        </div>
+        <script type="text/javascript" src="tab.js"></script>
     </body>
 </html>
