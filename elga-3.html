@@ -2,16 +2,16 @@
     <head>
         <meta charset="utf-8">
         <title>ELGA-3</title>
-        <link rel="stylesheet" type="text/css" href="styles.css">
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
         </head>
 
     <body>
         <div id="tabs">
-            <ul>
-                <li class="active">Home</li>
-                <li class="active">Sheets</li>
-                <li class="active">info</li>
-            </ul>
+            <nav>
+                <a href = "elga-3.html">Home</a>
+                <a href = "subsites/Sheets.html">Sheets</a>
+                <a href = "subsites/Info.html">info</a>
+            </nav>
         </div>
 
         <h1> 
@@ -19,7 +19,7 @@
         </h1>
 
         <div id = "mainBody">
-            <div>
+            <div>   
                 <p1>
                     This is the beginning of the elga3 website.<br>
                     this website was made to host the different sheets and have some other interactive things.<br>
@@ -30,37 +30,33 @@
 
                 <h4> now, my plans for this website are to do the following:</h4>
             </div>
+            <div>
+                <div class = "tabcontent">
+                    <h4>add sheets</h4>
+                    Adding the sheets we currently have on google docs to the website.<br>
+                    we want to do this as it would be far more efficient to have a website dedicated to this.<br>
+                </div>
 
-            <div class="tab">
-                <button class="tablinks" onclick="openCity(event, 'add sheets')">add sheets</button>
-                <button class="tablinks" onclick="openCity(event, 'add accounts')">add accounts</button>
-                <button class="tablinks" onclick="openCity(event, 'add personal subsites')">add personal subsites</button>
-                <button class="tablinks" onclick="openCity(event, 'full controll')">full controll</button>
+                <div class = "tabcontent">
+                    <h4>acconuts</h4>
+                    To make this happen in a safe way i might have to make some sort of account system.<br>
+                    This is something that i feel can be quite scary to do as i am worried about security.<br>
+                    I also dont really know how to do something like this so might happen a while into the project.<br>
+                </div>
+
+                <div class = "tabcontent">
+                    <h4>personal subsites</h4>
+                    When that has been done i would like for the server to be able to edit the website in some easy way.<br>
+                    like make subsites easily where they can have images and text and whatever, just for fun.<br>
+                </div>
+
+                <div class = "tabcontent">
+                    <h4>full controll</h4>
+                    This is basically just going to be a way for the server to have some cool website<br>
+                    with shit to do on it, we are already using the sheets, and having a website<br>
+                    which we have 100% controll over would be great.<br>
+                </div>
             </div>
-
-            <div id="add sheets" class = "tabcontent">
-                Adding the sheets we currently have on google docs to the website.
-                we want to do this as it would be far more efficient to have a website dedicated to this.
-            </div>
-
-            <div id="add accounts" class = "tabcontent">
-                To make this happen in a safe way i might have to make some sort of account system.
-                This is something that i feel can be quite scary to do as i am worried about security.
-                I also dont really know how to do something like this so might happen a while into the project.
-            </div>
-
-            <div id="add personal subsites" class = "tabcontent">
-                When that has been done i would like for the server to be able to edit the website in some easy way.
-                    like make subsites easily where they can have images and text and whatever, just for fun.
-            </div>
-
-            <div id="full controll" class = "tabcontent">
-                This is basically just going to be a way for the server to have some cool website
-                with shit to do on it, we are already using the sheets, and having a website
-                which we have 100% controll over would be great.
-            </div>
-
         </div>
-        <script type="text/javascript" src="tab.js"></script>
     </body>
 </html>
