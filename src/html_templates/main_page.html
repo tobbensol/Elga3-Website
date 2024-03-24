@@ -1,33 +1,43 @@
-<!DOCTYPE html>
-<html lang=en>
-<head>
+<!doctype html>
+<html lang="en">
+  <head>
     <title>Elga Rates</title>
-    <script src="https://unpkg.com/htmx.org@1.9.11" integrity="sha384-0gxUXCCR8yv9FM2b+U3FDbsKthCI66oH5IA9fHppQq9DDMHuMauqq1ZHBpJxQ0J0" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="/static/css/output.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body class="font-sans">
-    
-    <main class="flex justify-around p-2">
-        <ul class="flex-col space-y-2" id="coordinate_list">
-                {{range .Coordinates}}
-                    {{block "coordinate" .}}
-                        <div class="bg-blue-400 space-y-2 w-20 h-10 flex items-center justify-center">
-                            <li>{{.X}}, {{.Y}}</li>
-                        </div>
-                    {{end}}
-                {{end}}
-        </ul>
-    
-        <form hx-post="/add_coordinate/" hx-target="#coordinate_list", hx-swap="beforeend">
-            <div class="bg-slate-600 flex-col">
-                <input type="text", name="Y", class="bg-slate-500">
-                <input type="text", name="X", class="bg-slate-500">
-                <button type="submit">submit</button>
-            </div>
-        </form>
-    </main>
+    <script
+      src="https://unpkg.com/htmx.org@1.9.11"
+      integrity="sha384-0gxUXCCR8yv9FM2b+U3FDbsKthCI66oH5IA9fHppQq9DDMHuMauqq1ZHBpJxQ0J0"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="/static/css/output.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body class="font-sans">
+    <main class="flex justify-between">
+      <form
+        hx-post="/add_coordinate/"
+        hx-target="#coordinate_list"
+        hx-swap="beforeend"
+        class="justify-self-start"
+      >
+        <div class="flex h-screen flex-col bg-slate-600">
+          <input type="text" name="Y" class="rounded-md bg-slate-500 p-2" />
+          <input type="text" name="X" class="rounded-md bg-slate-500 p-2" />
+          <button type="submit">submit</button>
+        </div>
+      </form>
 
-</body>
+      <ul
+        class="flex w-screen flex-col items-center space-y-2 p-2"
+        id="coordinate_list"
+      >
+        {{range .Coordinates}} {{block "coordinate" .}}
+        <div
+          class="flex h-10 w-20 items-center justify-center space-y-2 rounded-md bg-blue-400"
+        >
+          <li>{{.X}}, {{.Y}}</li>
+        </div>
+        {{end}} {{end}}
+      </ul>
+    </main>
+  </body>
 </html>
