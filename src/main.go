@@ -33,12 +33,12 @@ func add_coordinate(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	fmt.Println("Hello World!")
-
 	http.HandleFunc("/", mainSite)
 	http.HandleFunc("/add_coordinate/", add_coordinate)
 
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
+
+	fmt.Println("Server hosted at: http://localhost:8000/")
 
 	log.Fatal(http.ListenAndServe(":8000", nil))
 }
