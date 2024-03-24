@@ -13,7 +13,7 @@ type Coordinate struct {
 }
 
 func mainSite(w http.ResponseWriter, r *http.Request) {
-	tmpl := template.Must(template.ParseFiles("./src/html_templates/main_page.html"))
+	tmpl := template.Must(template.ParseFiles("./html_templates/main_page.html"))
 
 	coordinates := map[string][]Coordinate{
 		"Coordinates": {
@@ -26,7 +26,7 @@ func mainSite(w http.ResponseWriter, r *http.Request) {
 }
 
 func add_coordinate(w http.ResponseWriter, r *http.Request) {
-	tmpl := template.Must(template.ParseFiles("./src/html_templates/main_page.html"))
+	tmpl := template.Must(template.ParseFiles("./html_templates/main_page.html"))
 	x := r.PostFormValue("X")
 	y := r.PostFormValue("Y")
 	tmpl.ExecuteTemplate(w, "coordinate", Coordinate{X: x, Y: y})

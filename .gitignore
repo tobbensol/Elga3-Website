@@ -2,6 +2,7 @@
 node_modules/
 
 # speciffic files
-static/css/output.css
+src/static/css/output.css
 
 # speciffic file endings
+
