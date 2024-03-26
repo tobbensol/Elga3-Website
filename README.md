@@ -37,14 +37,8 @@ technologies used are:
    echo 'connection_str="your_DB_connection_str_here' > .env
    ```
 
-5. Change directory to ./src
-
+5. Run the Go server:
    ```cmd
-   cd src
+   (cd src && go run ./main/main.go)
    ```
-
-6. Run the Go server:
-   ```cmd
-   go run main.go
-   ```
-7. Open your web browser and visit http://localhost:8000
+6. Open your web browser and visit http://localhost:8000
