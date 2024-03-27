@@ -29,7 +29,7 @@ technologies used are:
    ```
 3. Build Tailwind CSS:
    ```cmd
-   (cd configs && npx tailwindcss -i ../src/static/css/input.css -o ../src/static/css/output.css --watch)
+   npx tailwindcss -i ./src/UI/static/css/input.css -o ./src/UI/static/css/output.css --watch --config .\configs\tailwind.config.js
    ```
 4. Host a PostgreSQL database and make a .env file with the connection string
 

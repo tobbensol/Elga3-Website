@@ -1,8 +1,9 @@
 # directories
 node_modules/
+.idea/
 
 # speciffic files
-src/static/css/output.css
+src/UI/static/css/output.css
 
 # speciffic file endings
 *.env
