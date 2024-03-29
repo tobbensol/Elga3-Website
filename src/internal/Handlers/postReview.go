@@ -1,9 +1,7 @@
 package Handlers
 
 import (
-	"fmt"
 	"github.com/tobbensol/elga_3_website/internal/Models"
-	"github.com/tobbensol/elga_3_website/internal/Models/methods"
 	"html/template"
 	"log"
 	"net/http"
@@ -12,21 +10,17 @@ import (
 
 func AddCoordinate(w http.ResponseWriter, r *http.Request) {
 	tmpl := template.Must(template.ParseFiles("./UI/templates/main_page.html"))
-	nam := r.PostFormValue("Album_Name")
-	sco := r.PostFormValue("Score")
+	name := r.PostFormValue("Album_Name")
+	s := r.PostFormValue("Score")
 
-	Score, err := strconv.ParseFloat(sco, 64)
+	score, err := strconv.ParseUint(s, 10, 8)
 	if err != nil {
 		log.Fatal(err)
 		return
 	}
+	review := Models.Review{}.CreateReview(name, uint8(score))
 
-	dbEntry := Models.Review{AlbumName: nam, Score: uint8(Score)}
-	methods.CreateReview(dbEntry)
-
-	fmt.Println()
-
-	err = tmpl.ExecuteTemplate(w, "review", dbEntry)
+	err = tmpl.ExecuteTemplate(w, "review", review)
 	if err != nil {
 		return
 	}
