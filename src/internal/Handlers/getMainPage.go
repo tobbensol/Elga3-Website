@@ -1,9 +1,8 @@
 package Handlers
 
 import (
-	"fmt"
-	"github.com/tobbensol/elga_3_website/internal/DB"
 	"github.com/tobbensol/elga_3_website/internal/Models"
+	"github.com/tobbensol/elga_3_website/internal/Models/methods"
 	"html/template"
 	"net/http"
 )
@@ -11,14 +10,8 @@ import (
 func MainSite(w http.ResponseWriter, r *http.Request) {
 	tmpl := template.Must(template.ParseFiles("./UI/templates/main_page.html"))
 
-	var reviews []Models.Review
-
-	DB.DB.Find(&reviews)
-
-	fmt.Println(reviews)
-
 	returnReviews := map[string][]Models.Review{
-		"Reviews": reviews,
+		"Reviews": methods.GetReviews(),
 	}
 
 	err := tmpl.Execute(w, returnReviews)

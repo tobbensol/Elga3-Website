@@ -5,7 +5,7 @@ import (
 	"github.com/tobbensol/elga_3_website/internal/Models"
 )
 
-func getReviews() []Models.Review {
+func GetReviews() []Models.Review {
 	var output []Models.Review
 	DB.DB.Find(&output)
 	return output

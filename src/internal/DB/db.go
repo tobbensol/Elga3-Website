@@ -16,4 +16,5 @@ func getDBConnectionStr() string {
 func SetupDB() {
 	dsn := getDBConnectionStr()
 	DB, _ = gorm.Open(postgres.Open(dsn), &gorm.Config{})
+
 }
