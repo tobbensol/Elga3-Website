@@ -14,3 +14,7 @@ func GetReviews() []Models.Review {
 func CreateReview(review Models.Review) {
 	DB.DB.Create(&review)
 }
+
+func DeleteAll() {
+	DB.DB.Where("1=1").Delete(&Models.Review{})
+}
