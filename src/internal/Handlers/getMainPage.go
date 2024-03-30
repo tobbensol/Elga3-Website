@@ -6,7 +6,7 @@ import (
 	"net/http"
 )
 
-func MainSite(w http.ResponseWriter, r *http.Request) {
+func GetMainPage(w http.ResponseWriter, r *http.Request) {
 	tmpl := template.Must(template.ParseFiles("./UI/templates/main_page.html"))
 
 	returnReviews := map[string][]Models.Review{

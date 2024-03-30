@@ -19,7 +19,7 @@ func (Review) GetReviews() []Review {
 
 func (Review) CreateReview(name string, score uint8) Review {
 	review := Review{AlbumName: name, Score: score}
-	DB.DB.Create(review)
+	DB.DB.Create(&review)
 	return review
 }
 

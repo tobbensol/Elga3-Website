@@ -8,8 +8,8 @@ import (
 )
 
 func init() {
-	http.HandleFunc("/", Handlers.MainSite)
-	http.HandleFunc("/add_coordinate/", Handlers.AddCoordinate)
+	http.HandleFunc("/", Handlers.GetMainPage)
+	http.HandleFunc("/add_coordinate/", Handlers.PostReview)
 
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("UI/static"))))
 }

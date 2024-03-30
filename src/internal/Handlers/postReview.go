@@ -8,7 +8,7 @@ import (
 	"strconv"
 )
 
-func AddCoordinate(w http.ResponseWriter, r *http.Request) {
+func PostReview(w http.ResponseWriter, r *http.Request) {
 	tmpl := template.Must(template.ParseFiles("./UI/templates/main_page.html"))
 	name := r.PostFormValue("Album_Name")
 	s := r.PostFormValue("Score")
@@ -18,8 +18,8 @@ func AddCoordinate(w http.ResponseWriter, r *http.Request) {
 		log.Fatal(err)
 		return
 	}
-	review := Models.Review{}.CreateReview(name, uint8(score))
 
+	review := Models.Review{}.CreateReview(name, uint8(score))
 	err = tmpl.ExecuteTemplate(w, "review", review)
 	if err != nil {
 		return
