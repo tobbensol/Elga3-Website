@@ -9,7 +9,7 @@ import (
 
 func init() {
 	http.HandleFunc("/", Handlers.GetMainPage)
-	http.HandleFunc("/add_coordinate/", Handlers.PostReview)
+	http.HandleFunc("/postReview/", Handlers.PostReview)
 
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("UI/static"))))
 }
