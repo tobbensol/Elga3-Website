@@ -1,7 +1,7 @@
 package Handlers
 
 import (
-	"github.com/tobbensol/elga_3_website/internal/Models"
+	"github.com/tobbensol/elga_3_website/internal/Models/Review"
 	"html/template"
 	"net/http"
 	"strconv"
@@ -21,8 +21,8 @@ func PostReview(w http.ResponseWriter, r *http.Request) {
 	tmpl.ExecuteTemplate(w, "score error", scoreIsInt)
 
 	if scoreIsInt {
-		review := Models.Review{}.CreateReview(name, uint8(score))
-		err = tmpl.ExecuteTemplate(w, "review", review)
+		review := Review.Review{}.CreateReview(name, uint8(score))
+		err = tmpl.ExecuteTemplate(w, "Review", review)
 		if err != nil {
 			return
 		}

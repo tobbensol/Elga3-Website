@@ -4,7 +4,6 @@
     {{.AlbumName}}, {{.Score}}
   </li>
 </ul>
-
 {{end }} {{block "score error" .}}
 <div id="score_input" hx-swap-oob="outerHTML">
   <input type="text" name="Score" class="rounded-md bg-slate-500 p-1" />
@@ -12,4 +11,4 @@
   <p class="text-red-600">Please enter a valid number</p>
   {{end}}
 </div>
-s{{end}}
+{{end}}

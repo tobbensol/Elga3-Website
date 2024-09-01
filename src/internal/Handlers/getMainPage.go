@@ -1,7 +1,7 @@
 package Handlers
 
 import (
-	"github.com/tobbensol/elga_3_website/internal/Models"
+	"github.com/tobbensol/elga_3_website/internal/Models/Review"
 	"html/template"
 	"net/http"
 )
@@ -9,8 +9,8 @@ import (
 func GetMainPage(w http.ResponseWriter, r *http.Request) {
 	tmpl := template.Must(template.ParseFiles("./UI/templates/main_page.html"))
 
-	returnReviews := map[string][]Models.Review{
-		"Reviews": Models.Review{}.GetReviews(),
+	returnReviews := map[string][]Review.Review{
+		"Reviews": Review.Review{}.GetReviews(),
 	}
 
 	err := tmpl.Execute(w, returnReviews)

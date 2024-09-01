@@ -1,14 +1,17 @@
-package Models
+package Review
 
 import (
 	"github.com/tobbensol/elga_3_website/internal/DB"
-	"gorm.io/gorm"
 )
 
-type Review struct {
-	gorm.Model
-	AlbumName string
-	Score     uint8
+func (Review) Migrate() {
+	if !DB.DB.Migrator().HasTable(&Review{}) {
+		println("Table reviews not found, Creating table")
+		err := DB.DB.AutoMigrate(&Review{})
+		if err != nil {
+			return
+		}
+	}
 }
 
 func (Review) GetReviews() []Review {
