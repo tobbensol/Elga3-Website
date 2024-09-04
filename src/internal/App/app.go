@@ -7,11 +7,9 @@ import (
 )
 
 func StartApp() {
-	DB.SetupDB()
+	var db = DB.SetupDB()
 
-	Review.Review{}.Migrate()
-	Review.Review{}.DeleteAll()
+	Review.DeleteAll(db)
 
-	Server.Connect()
-
+	Server.Connect(db)
 }

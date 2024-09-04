@@ -1,19 +1,26 @@
 package DB
 
 import (
+	"fmt"
 	"github.com/joho/godotenv"
+	"github.com/tobbensol/elga_3_website/internal/Models/Review"
+	"github.com/tobbensol/elga_3_website/internal/Models/User"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
-
-var DB *gorm.DB
 
 func getDBConnectionStr() string {
 	envFile, _ := godotenv.Read("./.env")
 	return envFile["connection_str"]
 }
 
-func SetupDB() {
-	dsn := getDBConnectionStr()
-	DB, _ = gorm.Open(postgres.Open(dsn), &gorm.Config{})
+func SetupDB() *gorm.DB {
+	var DB *gorm.DB
+	connectionStr := getDBConnectionStr()
+	DB, _ = gorm.Open(postgres.Open(connectionStr), &gorm.Config{})
+	err := DB.AutoMigrate(&User.User{}, &Review.Review{})
+	if err != nil {
+		fmt.Println("failed to migrate DB schemas")
+	}
+	return DB
 }
