@@ -1,6 +1,7 @@
 package User
 
 import (
+	"github.com/tobbensol/elga_3_website/internal/Models/Review"
 	"gorm.io/gorm"
 )
 
@@ -11,7 +12,7 @@ func Get(db *gorm.DB) []User {
 }
 
 func Create(db *gorm.DB, name string) User {
-	User := User{Username: name}
+	User := User{Username: name, Review: []Review.Review{}}
 	db.Create(&User)
 	return User
 }

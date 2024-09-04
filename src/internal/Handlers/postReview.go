@@ -1,6 +1,7 @@
 package Handlers
 
 import (
+	"fmt"
 	"github.com/tobbensol/elga_3_website/internal/Models/Review"
 	"gorm.io/gorm"
 	"html/template"
@@ -27,8 +28,9 @@ func PostReview(db *gorm.DB) http.HandlerFunc {
 
 		if scoreIsInt {
 			review := Review.Create(db, name, uint8(score))
-			err = tmpl.ExecuteTemplate(w, "Review", review)
+			err = tmpl.ExecuteTemplate(w, "review", review)
 			if err != nil {
+				fmt.Println(err)
 				return
 			}
 		}

@@ -15,12 +15,12 @@ func getDBConnectionStr() string {
 }
 
 func SetupDB() *gorm.DB {
-	var DB *gorm.DB
+	var db *gorm.DB
 	connectionStr := getDBConnectionStr()
-	DB, _ = gorm.Open(postgres.Open(connectionStr), &gorm.Config{})
-	err := DB.AutoMigrate(&User.User{}, &Review.Review{})
+	db, _ = gorm.Open(postgres.Open(connectionStr), &gorm.Config{})
+	err := db.AutoMigrate(&User.User{}, &Review.Review{})
 	if err != nil {
 		fmt.Println("failed to migrate DB schemas")
 	}
-	return DB
+	return db
 }
