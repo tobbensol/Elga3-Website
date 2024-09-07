@@ -14,7 +14,7 @@ func init() {
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("UI/static"))))
 }
 
-func InitServer() {
+func Connect() {
 	fmt.Println("Server hosted at: http://localhost:8000/")
 	log.Fatal(http.ListenAndServe(":8000", nil))
 }

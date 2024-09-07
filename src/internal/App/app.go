@@ -11,5 +11,5 @@ func StartApp() {
 
 	Models.Review{}.DeleteAll()
 
-	Server.InitServer()
+	Server.Connect()
 }

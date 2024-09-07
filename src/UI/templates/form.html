@@ -1,15 +1,10 @@
 {{block "review" .}}
-<ul class="flex w-screen flex-col items-center space-y-2 p-1" id="review_list" hx-swap-oob="beforeend">
-  <li class="flex h-10 w-20 items-center justify-center space-y-2 rounded-md bg-blue-400">
+<ul id="review_list" hx-swap-oob="beforeend">
+  <li class="flex w-full max-w-md items-center justify-center rounded-md bg-slate-300 p-4">
     {{.AlbumName}}, {{.Score}}
   </li>
 </ul>
-
 {{end }} {{block "score error" .}}
-<div id="score_input" hx-swap-oob="outerHTML">
-  <input type="text" name="Score" class="rounded-md bg-slate-500 p-1" />
-  {{if not .}}
-  <p class="text-red-600">Please enter a valid number</p>
-  {{end}}
-</div>
-s{{end}}
+<input type="text" name="Score" class="rounded-md bg-slate-500 p-2" id="score_input" hx-swap-oob="outerHTML" />
+<p class="text-red-600" id="input_error" hx-swap-oob="outerHTML">{{if not .}} Please enter a valid number {{end}}</p>
+{{end}}
