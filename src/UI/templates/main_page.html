@@ -14,7 +14,11 @@
 
   <body class="bg-slate-800 font-sans">
     <!-- sticky nav-bar, stays at the top -->
-    <div class="sticky top-0 z-10 h-14 w-full bg-slate-800"></div>
+    <div class="sticky top-0 z-10 h-14 w-full bg-slate-800">
+      <div id="user_login" class="flex h-full items-center justify-end">
+        <button hx-post="/auth/" class="mr-4 w-24 rounded-md bg-slate-300 p-2">Login</button>
+      </div>
+    </div>
 
     <main class="flex h-[calc(100vh-3.5rem)]">
       <!-- sticky side-bar, stays on the left side, no scroll -->
@@ -27,7 +31,7 @@
               <p class="text-red-600" id="input_error"></p>
             </div>
             <div>
-              <button type="submit" class="w-24 self-end rounded-md bg-slate-300 p-2">Submit</button>
+              <button type="submit" class="float-right w-24 self-end rounded-md bg-slate-300 p-2">Submit</button>
             </div>
           </div>
         </form>
