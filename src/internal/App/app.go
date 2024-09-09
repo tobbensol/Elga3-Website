@@ -7,7 +7,7 @@ import (
 )
 
 func StartApp() {
-	var db = DB.SetupDB()
+	db := DB.SetupDB()
 
 	Review.DeleteAll(db)
 
