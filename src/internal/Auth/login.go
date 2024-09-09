@@ -3,12 +3,26 @@ package Auth
 import (
 	"golang.org/x/oauth2"
 	"net/http"
+	"time"
 )
 
 func Login(w http.ResponseWriter, r *http.Request) {
-	oauth2Config := getConfig()
+	codeVerifier := oauth2.GenerateVerifier()
+
+	// Set the code_verifier in a cookie
+	http.SetCookie(w, &http.Cookie{
+		Name:     "code_verifier",
+		Value:    codeVerifier,
+		MaxAge:   (int)(5 * time.Minute), // Cookie expiration time, 5 minutes for example
+		HttpOnly: true,                   // Prevent JavaScript access to the cookie
+		Path:     "/",
+	})
 	// access type online = access even if the user is away
-	url := oauth2Config.AuthCodeURL("state", oauth2.AccessTypeOffline)
+	url := oauthConfig.AuthCodeURL(
+		"random_state",
+		oauth2.AccessTypeOffline,
+		oauth2.S256ChallengeOption(codeVerifier),
+	)
 
 	http.Redirect(w, r, url, http.StatusSeeOther)
 }

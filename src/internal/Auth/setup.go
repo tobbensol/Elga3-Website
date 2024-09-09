@@ -5,9 +5,9 @@ import (
 	"golang.org/x/oauth2"
 )
 
-func getConfig() *oauth2.Config {
-	envFile, _ := godotenv.Read("./.env")
-	config := &oauth2.Config{
+var (
+	envFile, _  = godotenv.Read("./.env")
+	oauthConfig = &oauth2.Config{
 		ClientID:     envFile["CLIENT_ID"],
 		ClientSecret: envFile["CLIENT_SECRET"],
 		Endpoint: oauth2.Endpoint{
@@ -17,5 +17,4 @@ func getConfig() *oauth2.Config {
 		Scopes:      []string{"identify"},
 		RedirectURL: "http://localhost:8000/auth/callback",
 	}
-	return config
-}
+)
