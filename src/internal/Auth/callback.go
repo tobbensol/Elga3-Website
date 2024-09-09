@@ -22,10 +22,15 @@ func Callback(w http.ResponseWriter, r *http.Request) {
 
 	verifier := cookie.Value
 
+	// delete the cookie
 	http.SetCookie(w, &http.Cookie{
-		Name:   "code_verifier",
-		MaxAge: -1, // Delete the cookie
-		Path:   "/",
+		Name:     "code_verifier",
+		Value:    "",
+		MaxAge:   -1,
+		HttpOnly: true,
+		Secure:   true,
+		SameSite: http.SameSiteLaxMode,
+		Path:     "/auth",
 	})
 
 	// Exchange the authorization code for an access token

@@ -15,7 +15,9 @@ func Login(w http.ResponseWriter, r *http.Request) {
 		Value:    codeVerifier,
 		MaxAge:   (int)(5 * time.Minute), // Cookie expiration time, 5 minutes for example
 		HttpOnly: true,                   // Prevent JavaScript access to the cookie
-		Path:     "/",
+		Secure:   true,
+		SameSite: http.SameSiteLaxMode,
+		Path:     "/auth",
 	})
 	// access type online = access even if the user is away
 	url := oauthConfig.AuthCodeURL(
