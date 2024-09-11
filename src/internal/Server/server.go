@@ -15,7 +15,7 @@ func Connect(db *gorm.DB) {
 	http.HandleFunc("/postReview/", Handlers.PostReview(db))
 
 	http.HandleFunc("/auth/login", Auth.Login)
-	http.HandleFunc("/auth/callback", Auth.Callback)
+	http.HandleFunc("/auth/callback", Auth.Callback(db))
 
 	// host static files (css files, eventually images?)
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("UI/static"))))

@@ -21,7 +21,7 @@ func Login(w http.ResponseWriter, r *http.Request) {
 	})
 	// access type online = access even if the user is away
 	url := oauthConfig.AuthCodeURL(
-		"random_state",
+		"random_state", // this should idealy be random in the future, if i do so, consider implementing sessions for this
 		oauth2.AccessTypeOffline,
 		oauth2.S256ChallengeOption(codeVerifier),
 	)
