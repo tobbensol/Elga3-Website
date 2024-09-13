@@ -3,6 +3,7 @@ module github.com/tobbensol/elga_3_website
 go 1.22.1
 
 require (
+	github.com/go-chi/chi v1.5.5
 	github.com/joho/godotenv v1.5.1
 	golang.org/x/oauth2 v0.23.0
 	gorm.io/driver/postgres v1.5.9
@@ -10,9 +11,6 @@ require (
 )
 
 require (
-	github.com/gorilla/csrf v1.7.2 // indirect
-	github.com/gorilla/mux v1.8.1 // indirect
-	github.com/gorilla/securecookie v1.1.2 // indirect
 	github.com/jackc/pgpassfile v1.0.0 // indirect
 	github.com/jackc/pgservicefile v0.0.0-20240606120523-5a60cdf6a761 // indirect
 	github.com/jackc/pgx/v5 v5.6.0 // indirect
