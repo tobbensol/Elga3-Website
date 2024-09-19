@@ -23,7 +23,7 @@ func Connect(db *gorm.DB) {
 	r.Get("/auth/callback", Auth.Callback(db))
 
 	// host static files (css files, eventually images?)
-	r.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("UI/static"))))
+	r.Handle("/static/*", http.StripPrefix("/static/", http.FileServer(http.Dir("UI/static"))))
 
 	fmt.Println("Server hosted at: http://localhost:8000/")
 	log.Fatal(http.ListenAndServe(":8000", r))

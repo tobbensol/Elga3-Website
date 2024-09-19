@@ -39,13 +39,21 @@
 
       <!-- main content, scrollable -->
       <section class="w-4/5 overflow-y-auto bg-slate-400 p-4">
-        <ul class="flex flex-col items-center space-y-2" id="review_list">
+        <div class="flex flex-col items-center space-y-2" id="review_list">
           {{range .Reviews}}
-          <li class="flex w-full max-w-md items-center justify-center rounded-md bg-slate-300 p-4">
-            {{.AlbumName}}, {{.Score}}
-          </li>
+          <div class="flex w-full max-w-lg items-stretch space-x-3 rounded-md bg-slate-300 p-2">
+            <img
+              src="/static/images/preview.jpg"
+              class="max-h-20 max-w-20 self-center"
+              alt="get alternate description from backend"
+            />
+            <div class="flex w-full flex-col justify-between">
+              <div class="text-2xl">{{.AlbumName}}</div>
+              <div class="self-end p-2">{{.Score}}</div>
+            </div>
+          </div>
           {{end}}
-        </ul>
+        </div>
       </section>
     </main>
   </body>
