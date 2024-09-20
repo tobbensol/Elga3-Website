@@ -9,6 +9,7 @@ import (
 	"gorm.io/gorm"
 	"log"
 	"net/http"
+	"time"
 )
 
 type DiscordUser struct {
@@ -93,10 +94,17 @@ func Callback(db *gorm.DB) http.HandlerFunc {
 
 		fmt.Println(User.Get(db))
 
-		// You can now use the token to access the user's data
-		// Here, we'll just display the token
-		data := fmt.Sprintf("Access Token: %s\nRefresh Token: %s\n", token.AccessToken, token.RefreshToken, token.Expiry)
+		// put the username in a cookie, THIS IS NOT SAFE AT ALL, BUT IT'S THE IDENTIFICATION FOR THE TIME BEING
+		http.SetCookie(w, &http.Cookie{
+			Name:     "authorization",
+			Value:    discordUser.Username,
+			MaxAge:   (int)(time.Hour.Seconds() * 24), // Cookie expiration time, 5 minutes for example
+			HttpOnly: true,                            // Prevent JavaScript access to the cookie
+			Secure:   true,
+			SameSite: http.SameSiteLaxMode,
+			Path:     "/",
+		})
 
-		w.Write([]byte(data))
+		http.Redirect(w, r, "/", http.StatusSeeOther)
 	}
 }
