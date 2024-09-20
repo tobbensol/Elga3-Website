@@ -1,6 +1,7 @@
 package User
 
 import (
+	"fmt"
 	"github.com/tobbensol/elga_3_website/internal/Models/Review"
 	"gorm.io/gorm"
 	"time"
@@ -50,4 +51,14 @@ func DiscordUserExists(db *gorm.DB, discordID string) (bool, error) {
 		return exists, err
 	}
 	return exists, nil
+}
+
+func GetUserAvatar(db *gorm.DB, discordID string) (string, error) {
+	var user User
+	result := db.Where("discord_id = ?", discordID).First(&user)
+	if result.Error != nil {
+		return "", result.Error
+	}
+	avatar := fmt.Sprintf("cdn.discordapp.com/avatars/%s/%s.jpg", user.DiscordID, user.DiscordAvatar)
+	return avatar, nil
 }

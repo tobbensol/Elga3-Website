@@ -97,7 +97,7 @@ func Callback(db *gorm.DB) http.HandlerFunc {
 		// put the username in a cookie, THIS IS NOT SAFE AT ALL, BUT IT'S THE IDENTIFICATION FOR THE TIME BEING
 		http.SetCookie(w, &http.Cookie{
 			Name:     "authorization",
-			Value:    discordUser.Username,
+			Value:    discordUser.ID,
 			MaxAge:   (int)(time.Hour.Seconds() * 24), // Cookie expiration time, 5 minutes for example
 			HttpOnly: true,                            // Prevent JavaScript access to the cookie
 			Secure:   true,
