@@ -2,7 +2,7 @@ package Handlers
 
 import (
 	"fmt"
-	"github.com/tobbensol/elga_3_website/internal/Models/Review"
+	"github.com/tobbensol/elga_3_website/src/internal/Models/Review"
 	"gorm.io/gorm"
 	"html/template"
 	"net/http"
@@ -11,7 +11,7 @@ import (
 
 func PostReview(db *gorm.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		tmpl := template.Must(template.ParseFiles("./UI/templates/form.html"))
+		tmpl := template.Must(template.ParseFiles("./src/UI/templates/form.html"))
 		name := r.PostFormValue("Album_Name")
 		s := r.PostFormValue("Score")
 		scoreIsInt := true

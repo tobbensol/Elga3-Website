@@ -4,7 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"github.com/tobbensol/elga_3_website/internal/Models/User"
+	"github.com/tobbensol/elga_3_website/src/internal/Models/User"
 	"golang.org/x/oauth2"
 	"gorm.io/gorm"
 	"log"
@@ -42,7 +42,7 @@ func Callback(db *gorm.DB) http.HandlerFunc {
 			HttpOnly: true,
 			Secure:   true,
 			SameSite: http.SameSiteLaxMode,
-			Path:     "/auth",
+			Path:     "/auth/",
 		})
 
 		// Exchange the authorization code for an access token
@@ -94,7 +94,7 @@ func Callback(db *gorm.DB) http.HandlerFunc {
 
 		fmt.Println(User.Get(db))
 
-		// put the username in a cookie, THIS IS NOT SAFE AT ALL, BUT IT'S THE IDENTIFICATION FOR THE TIME BEING
+		// put the user ID in a cookie, THIS IS NOT SAFE AT ALL, BUT IT'S THE IDENTIFICATION FOR THE TIME BEING
 		http.SetCookie(w, &http.Cookie{
 			Name:     "authorization",
 			Value:    discordUser.ID,

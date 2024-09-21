@@ -17,7 +17,7 @@ func Login(w http.ResponseWriter, r *http.Request) {
 		HttpOnly: true,                   // Prevent JavaScript access to the cookie
 		Secure:   true,
 		SameSite: http.SameSiteLaxMode,
-		Path:     "/auth",
+		Path:     "/auth/",
 	})
 	// access type online = access even if the user is away
 	url := oauthConfig.AuthCodeURL(
