@@ -6,7 +6,7 @@ import (
     "fmt"
 )
 
-templ Main(reviews []Review.Review, logged_in bool, user User.User){
+templ MainPage(reviews []Review.Review, logged_in bool, user User.User){
 	<html lang="en">
 		<head>
     		<title>Elga Rates</title>
@@ -63,13 +63,22 @@ templ Main(reviews []Review.Review, logged_in bool, user User.User){
     </html>
 }
 
-templ score_form(score_error bool){
+templ PostReview(review Review.Review, scoreIsInt bool){
+	@score_form(scoreIsInt)
+	if scoreIsInt{
+		<div id="review_list" hx-swap-oob="beforeend">
+			@review_window(review)
+		</div>
+	}
+}
+
+templ score_form(scoreIsInt bool){
     <input type="text" name="Score" class="rounded-md bg-slate-500 p-2" id="score_input" hx-swap-oob="outerHTML" />
-    if score_error{
-        <p class="text-red-600" id="input_error" hx-swap-oob="outerHTML">Please enter a valid number</p>
+    if scoreIsInt{
+    	<p class="text-red-600" id="input_error" hx-swap-oob="outerHTML"></p>
     }
     else{
-        <p class="text-red-600" id="input_error" hx-swap-oob="outerHTML"></p>
+		<p class="text-red-600" id="input_error" hx-swap-oob="outerHTML">Please enter a valid number</p>
     }
 }
 
