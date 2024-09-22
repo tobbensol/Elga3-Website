@@ -26,10 +26,16 @@ technologies used are:
    ```bash
    npm install
    ```
-3. Build Tailwind CSS:
+3. Enter the working directory
    ```bash
-   npx tailwindcss -i ./src/UI/static/css/input.css -o ./src/UI/static/css/output.css --watch --config .\tailwind.config.js
+   cd src
    ```
+
+4. Build Tailwind CSS:
+   ```bash
+   npx tailwindcss -i ./UI/static/css/input.css -o ./UI/static/css/output.css --watch --config ..\tailwind.config.js
+   ```
+
 4. Set up and host a PostgreSQL database on your local machine or a remote server.
 
 5. Obtain an OAuth 2.0 Client ID and Secret from Discord for authentication.
@@ -43,6 +49,6 @@ technologies used are:
 
 7. Run the Go server:
    ```bash
-   (go generate ./... && go run ./...)
+   (go generate && go run .)
    ```
 8. Open your web browser and visit http://localhost:8000

@@ -2,7 +2,7 @@ package User
 
 import (
 	"fmt"
-	"github.com/tobbensol/elga_3_website/src/internal/Models/Review"
+	"github.com/tobbensol/elga_3_website/internal/Models/Review"
 	"gorm.io/gorm"
 	"time"
 )

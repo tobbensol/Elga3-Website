@@ -8,3 +8,4 @@ src/UI/static/css/output.css
 # speciffic file endings
 *.env
 *.exe
+*templ.go

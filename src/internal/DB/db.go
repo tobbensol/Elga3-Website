@@ -3,8 +3,8 @@ package DB
 import (
 	"fmt"
 	"github.com/joho/godotenv"
-	"github.com/tobbensol/elga_3_website/src/internal/Models/Review"
-	"github.com/tobbensol/elga_3_website/src/internal/Models/User"
+	"github.com/tobbensol/elga_3_website/internal/Models/Review"
+	"github.com/tobbensol/elga_3_website/internal/Models/User"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )

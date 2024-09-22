@@ -4,7 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"github.com/tobbensol/elga_3_website/src/internal/Models/User"
+	"github.com/tobbensol/elga_3_website/internal/Models/User"
 	"golang.org/x/oauth2"
 	"gorm.io/gorm"
 	"log"

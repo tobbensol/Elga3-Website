@@ -2,8 +2,8 @@ package Handlers
 
 import (
 	"context"
-	"github.com/tobbensol/elga_3_website/src/UI/Templates"
-	"github.com/tobbensol/elga_3_website/src/internal/Models/Review"
+	"github.com/tobbensol/elga_3_website/UI/Templates"
+	"github.com/tobbensol/elga_3_website/internal/Models/Review"
 	"gorm.io/gorm"
 	"log"
 	"net/http"
