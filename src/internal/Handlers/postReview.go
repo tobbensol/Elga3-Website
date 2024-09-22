@@ -11,7 +11,7 @@ import (
 
 func PostReview(db *gorm.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		tmpl := template.Must(template.ParseFiles("./src/UI/templates/form.html"))
+		tmpl := template.Must(template.ParseFiles("./src/UI/Templates/form.html"))
 		name := r.PostFormValue("Album_Name")
 		s := r.PostFormValue("Score")
 		scoreIsInt := true

@@ -31,13 +31,13 @@ func DeleteAll(db *gorm.DB) {
 	db.Where("1=1").Delete(&User{})
 }
 
-func FindByDiscordID(db *gorm.DB, discordID string) (User, error) {
+func FindByDiscordID(db *gorm.DB, discordID string) (*User, error) {
 	var user User
 	result := db.Where("discord_id = ?", discordID).First(&user)
 	if result.Error != nil {
-		return user, result.Error
+		return &user, result.Error
 	}
-	return user, nil
+	return &user, nil
 }
 
 func DiscordUserExists(db *gorm.DB, discordID string) (bool, error) {
@@ -53,12 +53,10 @@ func DiscordUserExists(db *gorm.DB, discordID string) (bool, error) {
 	return exists, nil
 }
 
-func GetUserAvatar(db *gorm.DB, discordID string) (string, error) {
-	var user User
-	result := db.Where("discord_id = ?", discordID).First(&user)
-	if result.Error != nil {
-		return "", result.Error
+func (user User) GetAvatar() string {
+	if user.DiscordID == "" {
+		return ""
 	}
-	avatar := fmt.Sprintf("cdn.discordapp.com/avatars/%s/%s.jpg", user.DiscordID, user.DiscordAvatar)
-	return avatar, nil
+	avatar := fmt.Sprintf("https://cdn.discordapp.com/avatars/%s/%s.jpg", user.DiscordID, user.DiscordAvatar)
+	return avatar
 }
