@@ -11,7 +11,7 @@ import (
 
 func getDBConnectionStr() string {
 	envFile, _ := godotenv.Read("./.env")
-	return envFile["connection_str"]
+	return envFile["CONNECTION_STR"]
 }
 
 func SetupDB() *gorm.DB {

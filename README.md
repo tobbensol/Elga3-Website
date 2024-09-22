@@ -4,41 +4,45 @@ A fun little project where i am finally trying out the full tech stack, from DB 
 
 technologies used are:
 
-- GO for web-server
-- HTMX for front-end
-- Tailwind CSS for styling
-- PostgreSQL server
-- Gorm as ORM
+- Go: Backend web server
+- HTMX: Front-end interactivity
+- Tailwind CSS: Styling framework
+- Templ: Templating engine for HTML generation
+- PostgreSQL: Database
+- Gorm: ORM (Object Relational Mapping) for database interaction
 
 ## Requirements:
-
-- [GO](https://go.dev/dl/)
-- [Node.js for npm](https://nodejs.org/en/download)
-- [postgreSQL server](https://www.postgresql.org/download/)
+- [Go](https://go.dev/dl/) (for building and running the backend)
+- [Node.js](https://nodejs.org/en/download) (for npm to build Tailwind CSS)
+- [PostgreSQL](https://www.postgresql.org/download) (database server)
 
 ## Installation
-
 1. Clone this repository:
-   ```cmd
+   ```bash
    git clone git@github.com:tobbensol/elga_3_website.git
    cd ELGA_3_WEBSITE
    ```
-2. Install Node.js dependencies:
-   ```cmd
+2. Install Node.js dependencies for tailwind:
+   ```bash
    npm install
    ```
 3. Build Tailwind CSS:
-   ```cmd
-   npx tailwindcss -i ./src/UI/static/css/input.css -o ./src/UI/static/css/output.css --watch --config .\configs\tailwind.config.js
+   ```bash
+   npx tailwindcss -i ./src/UI/static/css/input.css -o ./src/UI/static/css/output.css --watch --config .\tailwind.config.js
    ```
-4. Host a PostgreSQL database and make a .env file with the connection string
+4. Set up and host a PostgreSQL database on your local machine or a remote server.
 
+5. Obtain an OAuth 2.0 Client ID and Secret from Discord for authentication.
+
+6. Put the PostgreSQL connection string,  discord Client ID and Secret into a .env file
    ```cmd
-   echo 'connection_str="your_DB_connection_str_here' > .env
+   CONNECTION_STR="your_postgres_connection_string_here"
+   CLIENT_ID="your_discord_client_id_here"
+   CLIENT_SECRET="your_discord_client_secret_here"
    ```
 
-5. Run the Go server:
-   ```cmd
-   (cd src && go run ./main/main.go)
+7. Run the Go server:
+   ```bash
+   (go generate ./... && go run ./...)
    ```
-6. Open your web browser and visit http://localhost:8000
+8. Open your web browser and visit http://localhost:8000
