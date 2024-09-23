@@ -33,11 +33,10 @@ func GetMainPage(db *gorm.DB) http.HandlerFunc {
 
 		// Render the main page template
 		reviews := Review.GetAll(db)
-		if loggedIn {
-			err = Templates.MainPage(reviews, loggedIn, *user).Render(context.Background(), w)
-			if err != nil {
-				log.Printf("Error rendering template: %v", err)
-			}
+
+		err = Templates.MainPage(reviews, loggedIn, *user).Render(context.Background(), w)
+		if err != nil {
+			log.Printf("Error rendering template: %v", err)
 		}
 	}
 }
