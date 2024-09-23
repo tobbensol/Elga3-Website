@@ -24,12 +24,12 @@ templ MainPage(reviews []Review.Review, logged_in bool, user User.User){
 			<!-- sticky nav-bar, stays at the top -->
 			<div class="sticky top-0 z-10 flex h-14 w-full items-center bg-slate-800">
 				if logged_in{
-				<a href="/auth/login" class="ml-auto mr-4 flex justify-around rounded-3xl bg-slate-300 p-2">
-					<img src={user.GetAvatar()} alt="user avatar" class="h-6 w-6" />
+				<a href="/auth/login" class="ml-auto mr-2 flex justify-around p-2">
+					<img src={user.GetAvatar()} alt="user avatar" class="rounded-full max-h-10" />
 				</a>
 				}
 				else{
-				<a href="/auth/login" class="ml-auto mr-4 flex justify-around rounded-3xl bg-slate-300 p-2">
+				<a href="/auth/login" class="ml-auto mr-2 flex justify-around p-2 bg-slate-300 rounded-full">
 					<img src="static/images/discord.svg" alt="discord logo" class="h-6 w-6" />
 				</a>
 				}
