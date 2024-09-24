@@ -19,11 +19,11 @@ func Create(db *gorm.DB, username string, discordID string, discordAvatar string
 	User := User{
 		Username:      username,
 		DiscordID:     discordID,
-		Reviews:       []Review.Review{},
 		DiscordAvatar: discordAvatar,
 		AccessToken:   accessToken,
 		RefreshToken:  refreshToken,
 		TokenExpiry:   tokenExpiry,
+		Reviews:       []Review.Review{},
 	}
 	db.Create(&User)
 	return User
@@ -39,6 +39,7 @@ func FindByDiscordID(db *gorm.DB, discordID string) (*User, error) {
 	if result.Error != nil {
 		return &user, result.Error
 	}
+	db.Preload("Reviews").First(&user, user.ID)
 	return &user, nil
 }
 
@@ -61,6 +62,7 @@ func FindByDiscordUsername(db *gorm.DB, username string) (*User, error) {
 	if result.Error != nil {
 		return &user, result.Error
 	}
+	db.Preload("Reviews").First(&user, user.ID)
 	return &user, nil
 }
 
@@ -86,5 +88,6 @@ func GetUserFromCookie(db *gorm.DB, r *http.Request) (*User, error) {
 			return user, nil
 		}
 	}
+	db.Preload("Reviews").First(&user, user.ID)
 	return user, err
 }

@@ -14,5 +14,5 @@ type User struct {
 	AccessToken   string
 	RefreshToken  string
 	TokenExpiry   time.Time
-	Reviews       []Review.Review
+	Reviews       []Review.Review `gorm:"foreignkey:UserID"`
 }
