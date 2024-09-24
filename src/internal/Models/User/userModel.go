@@ -14,5 +14,5 @@ type User struct {
 	AccessToken   string
 	RefreshToken  string
 	TokenExpiry   time.Time
-	Review        []Review.Review
+	Reviews       []Review.Review
 }

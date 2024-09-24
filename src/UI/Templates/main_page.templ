@@ -42,7 +42,7 @@ templ MainPage(reviews []Review.Review, logged_in bool, user *User.User){
 templ topBar(logged_in bool, user *User.User){
 	<div class="sticky top-0 z-10 flex h-14 w-full items-center bg-slate-800">
 		if logged_in{
-		<a href="/auth/login" class="ml-auto mr-2 flex justify-around p-2">
+		<a href={templ.SafeURL("/user/" + user.Username)} class="ml-auto mr-2 flex justify-around p-2">
 			<img src={user.GetAvatar()} alt="user avatar" class="rounded-full max-h-10" />
 		</a>
 		}

@@ -19,7 +19,7 @@ func Create(db *gorm.DB, username string, discordID string, discordAvatar string
 	User := User{
 		Username:      username,
 		DiscordID:     discordID,
-		Review:        []Review.Review{},
+		Reviews:       []Review.Review{},
 		DiscordAvatar: discordAvatar,
 		AccessToken:   accessToken,
 		RefreshToken:  refreshToken,
@@ -53,6 +53,15 @@ func DiscordUserExists(db *gorm.DB, discordID string) (bool, error) {
 		return exists, err
 	}
 	return exists, nil
+}
+
+func FindByDiscordUsername(db *gorm.DB, username string) (*User, error) {
+	var user User
+	result := db.Where("Username = ?", username).First(&user)
+	if result.Error != nil {
+		return &user, result.Error
+	}
+	return &user, nil
 }
 
 func (user User) GetAvatar() string {

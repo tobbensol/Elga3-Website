@@ -17,10 +17,13 @@ func Connect(db *gorm.DB) {
 	r.Use(middleware.Logger)
 	// all the http request handlers
 	r.Get("/", Handlers.GetMainPage(db))
-	r.Post("/postReview/", Handlers.PostReview(db))
+	r.Post("/postReview", Handlers.PostReview(db))
+	r.Get("/user/{user}", Handlers.GetUserPage(db))
 
-	r.Get("/auth/login", Auth.Login)
-	r.Get("/auth/callback", Auth.Callback(db))
+	r.Route("/auth", func(r chi.Router) {
+		r.Get("/login", Auth.Login)
+		r.Get("/callback", Auth.Callback(db))
+	})
 
 	// host static files (css files, eventually images?)
 	r.Handle("/static/*", http.StripPrefix("/static/", http.FileServer(http.Dir("UI/static"))))
