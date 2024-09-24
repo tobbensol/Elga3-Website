@@ -10,11 +10,11 @@ func GetAll(db *gorm.DB) []Review {
 	return output
 }
 
-func Create(db *gorm.DB, name string, score uint8) Review {
+func Create(db *gorm.DB, userID uint, name string, score uint8) Review {
 	review := Review{
 		AlbumName: name,
 		Score:     score,
-		UserID:    1}
+		UserID:    userID}
 	db.Create(&review)
 	return review
 }
