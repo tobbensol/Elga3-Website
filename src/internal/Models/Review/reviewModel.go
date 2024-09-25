@@ -6,7 +6,7 @@ import (
 
 type Review struct {
 	gorm.Model
-	AlbumName string
-	Score     uint8
-	UserID    uint
+	Score  uint8
+	ItemID uint
+	UserID uint
 }

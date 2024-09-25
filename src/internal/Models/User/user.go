@@ -43,17 +43,23 @@ func FindByDiscordID(db *gorm.DB, discordID string) (*User, error) {
 	return &user, nil
 }
 
-func DiscordUserExists(db *gorm.DB, discordID string) (bool, error) {
+func FindByID(db *gorm.DB, id uint) (*User, error) {
+	var user User
+	result := db.Where("ID = ?", id).First(&user)
+	if result.Error != nil {
+		return &user, result.Error
+	}
+	db.Preload("Reviews").First(&user, user.ID)
+	return &user, nil
+}
+
+func DiscordUserExists(db *gorm.DB, discordID string) bool {
 	var exists bool
-	err := db.Model(&User{}).
+	db.Model(&User{}).
 		Select("count(*) > 0").
 		Where("discord_id = ?", discordID).
-		Find(&exists).
-		Error
-	if err != nil {
-		return exists, err
-	}
-	return exists, nil
+		Find(&exists)
+	return exists
 }
 
 func FindByDiscordUsername(db *gorm.DB, username string) (*User, error) {

@@ -1,12 +1,12 @@
 package Templates
 
 import (
-    "github.com/tobbensol/elga_3_website/internal/Models/Review"
     "github.com/tobbensol/elga_3_website/internal/Models/User"
+    "github.com/tobbensol/elga_3_website/internal/Handlers/HandlerStructs"
     "fmt"
 )
 
-templ MainPage(reviews []Review.Review, logged_in bool, user *User.User){
+templ MainPage(reviews []HandlerStructs.ReviewData, logged_in bool, user *User.User){
 	<html lang="en">
 		<head>
     		<title>Elga Rates</title>
@@ -61,7 +61,7 @@ templ topBar(logged_in bool, user *User.User){
 templ sideBar(){
 	<aside class="sticky top-10 w-1/5 bg-slate-600 p-4">
 		<form hx-post="/postReview" hx-swap="none" class="flex flex-col space-y-2">
-			<input type="text" name="Album_Name" class="rounded-md bg-slate-500 p-2" placeholder="Album Name" />
+			<input type="text" name="ItemName" class="rounded-md bg-slate-500 p-2" placeholder="Album Name" />
 			<input type="text" name="Score" class="rounded-md bg-slate-500 p-2" placeholder="Score" id="score_input" />
 			<div class="flex">
 				<div class="w-screen">
@@ -75,7 +75,7 @@ templ sideBar(){
 	</aside>
 }
 
-templ PostReview(review Review.Review, errMessage string){
+templ PostReview(review HandlerStructs.ReviewData, errMessage string){
 	@scoreForm(errMessage)
 	if errMessage == ""{
 		<div id="review_list" hx-swap-oob="beforeend">
@@ -89,13 +89,13 @@ templ scoreForm(errMessage string){
 	<p class="text-red-600" id="input_error" hx-swap-oob="outerHTML">{errMessage}</p>
 }
 
-templ makeReviewList(reviews []Review.Review){
+templ makeReviewList(reviews []HandlerStructs.ReviewData){
     for _, review := range reviews{
         @reviewWindow(review)
     }
 }
 
-templ reviewWindow(review Review.Review){
+templ reviewWindow(review HandlerStructs.ReviewData){
     <div class="flex w-full max-w-lg items-stretch space-x-3 rounded-md bg-slate-300 p-2">
         <img
             src="/static/images/preview.jpg"
@@ -103,8 +103,8 @@ templ reviewWindow(review Review.Review){
             alt="get alternate description from backend"
         />
         <div class="flex w-full flex-col justify-between">
-            <div class="text-2xl">{review.AlbumName}</div>
-            <div class="self-end p-2">{fmt.Sprintf("%d", review.Score)}</div>
+            <div class="text-2xl">{review.Item.Name}</div>
+            <div class="self-end p-2">{fmt.Sprintf("%d", review.Review.Score)}</div>
         </div>
     </div>
 }

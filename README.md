@@ -31,9 +31,9 @@ technologies used are:
    cd src
    ```
 
-4. Build Tailwind CSS:
+4. Initialize tailwindCSS and Templ LSP:
    ```bash
-   npx tailwindcss -i ./UI/static/css/input.css -o ./UI/static/css/output.css --watch --config ..\tailwind.config.js
+   cmd /c "npx tailwindcss -i ./UI/static/css/input.css -o ./UI/static/css/output.css --watch --config ..\tailwind.config.js && templ lsp"
    ```
 
 4. Set up and host a PostgreSQL database on your local machine or a remote server.

@@ -3,6 +3,7 @@ package Handlers
 import (
 	"github.com/go-chi/chi"
 	"github.com/tobbensol/elga_3_website/UI/Templates"
+	"github.com/tobbensol/elga_3_website/internal/Handlers/HandlerStructs"
 	"github.com/tobbensol/elga_3_website/internal/Models/User"
 	"gorm.io/gorm"
 	"log"
@@ -22,9 +23,10 @@ func GetUserPage(db *gorm.DB) http.HandlerFunc {
 		}
 
 		reviews := userPage.Reviews
+		reviewsWithData := HandlerStructs.GetAllReviewData(db, reviews)
 
 		// Render the main page template
-		err = Templates.MainPage(reviews, loggedIn, user).Render(r.Context(), w)
+		err = Templates.MainPage(reviewsWithData, loggedIn, user).Render(r.Context(), w)
 		if err != nil {
 			log.Printf("Error rendering template: %v", err)
 		}

@@ -86,7 +86,7 @@ func Callback(db *gorm.DB) http.HandlerFunc {
 		//User.DeleteAll(db)
 
 		// Look if user exists
-		exists, err := User.DiscordUserExists(db, discordUser.ID)
+		exists := User.DiscordUserExists(db, discordUser.ID)
 		if !exists {
 			// User does not exist, so make one
 			User.Create(db, discordUser.Username, discordUser.ID, discordUser.Avatar, token.AccessToken, token.RefreshToken, token.Expiry)
