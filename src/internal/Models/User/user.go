@@ -91,9 +91,9 @@ func GetUserFromCookie(db *gorm.DB, r *http.Request) (*User, error) {
 			// if user doesn't exist, the user is not logged in
 			log.Printf("Error retrieving user by Discord ID: %v", err)
 		} else {
+			db.Preload("Reviews").First(&user, user.ID)
 			return user, nil
 		}
 	}
-	db.Preload("Reviews").First(&user, user.ID)
 	return user, err
 }

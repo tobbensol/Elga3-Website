@@ -23,3 +23,7 @@ func FindByName(db *gorm.DB, name string) (*Item, error) {
 	db.Preload("Reviews").First(&item, item.ID)
 	return &item, nil
 }
+
+func DeleteAll(db *gorm.DB) {
+	db.Where("1=1").Delete(&Item{})
+}
