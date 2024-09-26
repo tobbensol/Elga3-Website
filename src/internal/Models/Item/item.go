@@ -27,3 +27,9 @@ func FindByName(db *gorm.DB, name string) (*Item, error) {
 func DeleteAll(db *gorm.DB) {
 	db.Where("1=1").Delete(&Item{})
 }
+
+func GetAll(db *gorm.DB) []Item {
+	var output []Item
+	db.Find(&output)
+	return output
+}

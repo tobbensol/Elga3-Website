@@ -1,0 +1,35 @@
+package Templates
+
+import (
+	"github.com/tobbensol/elga_3_website/internal/Handlers/HandlerStructs"
+	"fmt"
+)
+
+templ PostReview(review HandlerStructs.ReviewData, errMessage string){
+	@scoreForm(errMessage)
+	if errMessage == ""{
+		<div id="reviewList" hx-swap-oob="beforeend">
+			@reviewWindow(review)
+		</div>
+	}
+}
+
+templ makeReviewList(reviews []HandlerStructs.ReviewData){
+    for _, review := range reviews{
+        @reviewWindow(review)
+    }
+}
+
+templ reviewWindow(review HandlerStructs.ReviewData){
+    <div class="flex w-full max-w-lg items-stretch space-x-3 rounded-md bg-slate-300 p-2">
+        <img
+            src="/static/images/preview.jpg"
+            class="max-h-20 max-w-20 self-center"
+            alt="get alternate description from backend"
+        />
+        <div class="flex w-full flex-col justify-between">
+            <div class="text-2xl">{review.Item.Name}</div>
+            <div class="self-end p-2">{fmt.Sprintf("%d", review.Review.Score)}</div>
+        </div>
+    </div>
+}

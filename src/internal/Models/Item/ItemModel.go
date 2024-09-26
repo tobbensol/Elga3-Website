@@ -9,5 +9,6 @@ type Item struct {
 	gorm.Model
 	Name     string
 	Category string
+	IconPath string
 	reviews  []Review.Review `gorm:"foreignkey:ItemID"`
 }

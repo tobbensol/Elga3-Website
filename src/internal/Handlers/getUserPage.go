@@ -26,7 +26,7 @@ func GetUserPage(db *gorm.DB) http.HandlerFunc {
 		reviewsWithData := HandlerStructs.GetAllReviewData(db, reviews)
 
 		// Render the main page template
-		err = Templates.MainPage(reviewsWithData, loggedIn, user).Render(r.Context(), w)
+		err = Templates.UserPage(reviewsWithData, loggedIn, user).Render(r.Context(), w)
 		if err != nil {
 			log.Printf("Error rendering template: %v", err)
 		}

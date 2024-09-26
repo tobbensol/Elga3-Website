@@ -1,0 +1,34 @@
+package Templates
+
+import (
+	"github.com/tobbensol/elga_3_website/internal/Models/Item"
+)
+
+
+templ PostItem(item Item.Item, errMessage string){
+	@scoreForm(errMessage)
+	if errMessage == ""{
+		<div id="itemList" hx-swap-oob="beforeend">
+			@itemWindow(item)
+		</div>
+	}
+}
+
+templ makeItemList(items []Item.Item){
+    for _, item := range items{
+        @itemWindow(item)
+    }
+}
+
+templ itemWindow(item Item.Item){
+    <div class="flex w-full max-w-lg items-stretch space-x-3 rounded-md bg-slate-300 p-2">
+        <img
+            src={item.IconPath}
+            class="max-h-20 max-w-20 self-center"
+            alt="get alternate description from backend"
+        />
+        <div class="flex w-full flex-col justify-between">
+            <div class="text-2xl">{item.Name}</div>
+        </div>
+    </div>
+}

@@ -2,11 +2,10 @@ package Templates
 
 import (
     "github.com/tobbensol/elga_3_website/internal/Models/User"
-    "github.com/tobbensol/elga_3_website/internal/Handlers/HandlerStructs"
-    "fmt"
+	"github.com/tobbensol/elga_3_website/internal/Models/Item"
 )
 
-templ MainPage(reviews []HandlerStructs.ReviewData, logged_in bool, user *User.User){
+templ MainPage(items []Item.Item, logged_in bool, user *User.User){
 	<html lang="en">
 		<head>
     		<title>Elga Rates</title>
@@ -30,8 +29,8 @@ templ MainPage(reviews []HandlerStructs.ReviewData, logged_in bool, user *User.U
 
 				  <!-- main content, scrollable -->
 				<section class="w-4/5 overflow-y-auto bg-slate-400 p-4">
-					<div class="flex flex-col items-center space-y-2" id="review_list">
-						@makeReviewList(reviews)
+					<div class="flex flex-col items-center space-y-2" id="itemList">
+						@makeItemList(items)
 					</div>
 				</section>
 			</main>
@@ -75,36 +74,7 @@ templ sideBar(){
 	</aside>
 }
 
-templ PostReview(review HandlerStructs.ReviewData, errMessage string){
-	@scoreForm(errMessage)
-	if errMessage == ""{
-		<div id="review_list" hx-swap-oob="beforeend">
-			@reviewWindow(review)
-		</div>
-	}
-}
-
 templ scoreForm(errMessage string){
     <input type="text" name="Score" class="rounded-md bg-slate-500 p-2" id="score_input" hx-swap-oob="outerHTML" />
 	<p class="text-red-600" id="input_error" hx-swap-oob="outerHTML">{errMessage}</p>
-}
-
-templ makeReviewList(reviews []HandlerStructs.ReviewData){
-    for _, review := range reviews{
-        @reviewWindow(review)
-    }
-}
-
-templ reviewWindow(review HandlerStructs.ReviewData){
-    <div class="flex w-full max-w-lg items-stretch space-x-3 rounded-md bg-slate-300 p-2">
-        <img
-            src="/static/images/preview.jpg"
-            class="max-h-20 max-w-20 self-center"
-            alt="get alternate description from backend"
-        />
-        <div class="flex w-full flex-col justify-between">
-            <div class="text-2xl">{review.Item.Name}</div>
-            <div class="self-end p-2">{fmt.Sprintf("%d", review.Review.Score)}</div>
-        </div>
-    </div>
 }
