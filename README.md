@@ -2,7 +2,7 @@
 
 A fun little project where i am finally trying out the full tech stack, from DB to web-server to front-end.
 
-## Technologies used are:
+## Technologies:
 - [Go](https://go.dev/dl/): Backend web server
 - [HTMX](https://htmx.org/): Front-end interactivity
 - [Tailwind CSS](https://tailwindcss.com/): Styling framework
